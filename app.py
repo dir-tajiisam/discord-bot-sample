@@ -8,6 +8,14 @@ from work3 import on_reaction as on_reaction3
 from work3 import on_message as on_message3
 from work3 import on_ready as on_ready3
 from work3 import on_slash as on_slash3
+from work4 import on_reaction as on_reaction4
+from work4 import on_message as on_message4
+from work4 import on_ready as on_ready4
+from work4 import on_slash as on_slash4
+from work5 import on_reaction as on_reaction5
+from work5 import on_message as on_message5
+from work5 import on_ready as on_ready5
+from work5 import on_slash as on_slash5
 import discord
 from dotenv import load_dotenv
 import sys
@@ -41,8 +49,32 @@ client = discord.Client(intents=discord.Intents.all())
 # get args
 work = sys.argv[1]
 
+# 課題5
+if work == 'work5':
+    tree = discord.app_commands.CommandTree(client)
+    commands = discord.app_commands
+    # 起動時に動作する処理
+    on_ready5(client, tree, CHANNEL_ID, SERVER_ID)
+    # メッセージ受信時に動作する処理
+    on_message5(client, CHANNEL_ID)
+    # リアクション受信時に動作する処理
+    on_reaction5(client, CHANNEL_ID)
+    # スラッシュコマンド受信時に動作する処理
+    on_slash5(client, tree, commands, CHANNEL_ID, SERVER_ID)
+# 課題4
+elif work == 'work4':
+    tree = discord.app_commands.CommandTree(client)
+    commands = discord.app_commands
+    # 起動時に動作する処理
+    on_ready4(client, tree, CHANNEL_ID, SERVER_ID)
+    # メッセージ受信時に動作する処理
+    on_message4(client, CHANNEL_ID)
+    # リアクション受信時に動作する処理
+    on_reaction4(client, CHANNEL_ID)
+    # スラッシュコマンド受信時に動作する処理
+    on_slash4(client, tree, commands, CHANNEL_ID, SERVER_ID)
 # 課題3
-if work == 'work3':
+elif work == 'work3':
     tree = discord.app_commands.CommandTree(client)
     commands = discord.app_commands
     # 起動時に動作する処理
