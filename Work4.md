@@ -14,9 +14,23 @@ python app.py work4
 
 #### 課題 4-1: 会話っぽいものを作ってみよう
 
-- どうなるのか？
-  - スラッシュコマンドを入力すると、Botがドロップダウンリストを表示してくれる
-  - ドロップダウンリストを選択すると、選択肢に応じた反応をBotがしてくれる
+すでにサンプルがあるのでそれの動作を確認してみよう
+
+- どう動くのか？
+  1. スラッシュコマンドを入力すると、Botがドロップダウンリストを表示してくれる
+    - この関数の中でドロップダウンリストを作って、メッセージ送信している
+    ```python
+    async def on_slash_weather(interaction: discord.interactions.Interaction):
+    ```
+  2. ドロップダウンリストを選択すると、選択肢に応じた反応をBotがしてくれる
+    - `on_slash_weather`の中で、選択肢が選択されたときの処理を設定している（`on_prefecture_selected`が該当）
+    ```python
+    select.callback = on_prefecture_selected
+    ```
+    - `on_prefecture_selected`の中の処理は↓の関数の中で定義している
+    ```python
+    async def on_prefecture_selected(interaction: discord.interactions.Interaction):
+    ```
 - 修正するコード
   - work4/on_slash.py
 - やること
