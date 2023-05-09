@@ -145,7 +145,7 @@ VS Codeのターミナルで以下のコードを実行する
    git clone https://github.com/dir-tajiisam/discord-bot-sample
    ```
    ```ps
-   cd ./discordbot_keisyu
+   cd ./discord-bot-sample
    ```
 #### 4-1-4. 仮想環境にライブラリをインストールする
    ```ps
