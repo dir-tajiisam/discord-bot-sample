@@ -52,10 +52,12 @@ def on_slash(client: discord.Client, tree: discord.app_commands.CommandTree, com
     @commands.describe(prefecture="都道府県名を入力してください")
     @commands.guilds(SERVER_ID)
     async def on_slash_weather(interaction: discord.interactions.Interaction, prefecture: str):
+        # 特定のチャンネル外での実行は無視する
         if interaction.channel.id != CHANNEL_ID:
             await interaction.response.send_message("このチャンネルでは使用できません", ephemeral=True)
             return
 
+        # メッセージを送信する
         text = weather(prefecture)
         await interaction.response.send_message(text, ephemeral=False)
 

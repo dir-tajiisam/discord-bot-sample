@@ -23,11 +23,11 @@ python app.py work3
   - ただ、他の人のアプリのスラッシュコマンドとかぶってしまい、候補がたくさん出てきてしまう場合は、以下の`hello`を自分なりのものに変更しよう
   ``` Python
   @tree.command(
-      name="hello",  # コマンド名
-      description="Send Hello world."  # コマンドの説明
+      # ↓ここを"hello"から好きな名前に変更する。ex. hello_by_自分の名前
+      name="hello",  
+      description="Send Hello world."
   )
   ```
-  - ex. hello_by_自分の名前
   - これまでメッセージ送信に使っていた関数とは異なるので注意。違いを確認してみよう。またephemeralをTrueにすると、自分にしか見えなくなるので、これも試してみよう
   ```python
   await interaction.response.send_message("***", ephemeral=False)
@@ -43,15 +43,15 @@ python app.py work3
   - work3/on_slash.py
 - やること
   - `/weather`が使えるようになっているので試してみよう
-  - `def weather...`は先程の課題2−3で作成したものと既存のものを上書きしておこう
-  - ただ、他の人のアプリのスラッシュコマンドとかぶってしまい、候補がたくさん出てきてしまう場合は、以下の`weather`を自分なりのものに変更しよう
+  - 課題3-2と同様に、他の人のアプリのスラッシュコマンドとかぶってしまい、候補がたくさん出てきてしまう場合は、以下の`weather`を自分なりのものに変更しよう
   ``` Python
   @tree.command(
       name="weather",  # コマンド名
       description="てんきをよほーします"  # コマンドの説明
   )
   ```
-  - 引数を追加する場合には2箇所修正が必要です。ここも違う名前にしてみたりして確認してみよう。以下は`prefecture`を追加する場合の例
+  - `def weather...`は先程の課題2−3で修正したものがあれば、上書きしておこう
+  - 引数を追加する場合には2箇所修正が必要。ここも違う名前にしてみたりして確認してみよう。以下は`prefecture`を追加する場合の例
     - コマンドの定義
     ```python
     @commands.describe(prefecture="都道府県名を入力してください")

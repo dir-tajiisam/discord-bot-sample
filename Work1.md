@@ -54,8 +54,14 @@ python app.py work1
   - work1/on_reaction.py
 - やること
   - コードを追加して好きなリアクションでBotに返信させよう！
-  - `await message.reply(text)`でも`await channel.send(text)`でもどちらでもOK
+  - `await message.reply(text)`でも`await channel.send(text)`でもどちらを使ってもOK
   - 文字列に絵文字（😊や🐍など）を入れて送ると、Discord 側の絵文字に変換されるので、それを使ってもOK
+  - 絵文字は[こちら](https://fromkato.com/emoji)からコピー可能です
+  - (もっとやりたい人向け)押されたリアクションを元に、返信内容を変えて見ることにもチャレンジしてみよう
+  ```python
+  if str(reaction.emoji) == '🐍':
+    # 処理を書く
+  ```
 - 備考（もっと詳しく知りたい人向け）
   - サーバーにメッセージが投稿されると以下の関数が起動する  
   ``` Python
