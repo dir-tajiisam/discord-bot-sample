@@ -6,18 +6,8 @@ import requests
 # おみくじの結果を返すメソッドを定義
 def omikuji():
     number = random.randint(0, 5)
-    if number == 0:
-        result = '大吉'
-    elif number == 1:
-        result = '中吉'
-    elif number == 2:
-        result = '小吉'
-    elif number == 3:
-        result = '吉'
-    elif number == 4:
-        result = '凶'
-    elif number == 5:
-        result = '大凶'
+
+    result = '大凶☠️'
     return result
 
 
@@ -75,14 +65,9 @@ def on_message(client: discord.Client, CHANNEL_ID: int):
             await message.reply(text)
         # TODO 課題2-2
         # 天気または予報から始まる場合は天気を返す(東京)
-        elif message.content.startswith(('天気', '予報')):
-            result = weather(message.content)
-            text = f"天気概況 : {result}"
-            await message.reply(text)
+
+        # TODO 課題2-3
         # 都道府県名がメッセージだった場合はその都道府県の天気を返す
-        elif message.content.startswith(('東京', '福岡')):
-            result = weather(message.content)
-            text = f"天気概況 : {result}"
-            await message.reply(text)
+
         else:
             await message.reply("占い、うらない、天気、予報、都道府県名のいずれかを入力してください")

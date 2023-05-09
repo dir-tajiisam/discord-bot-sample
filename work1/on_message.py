@@ -39,7 +39,3 @@ def on_message(client: discord.Client, CHANNEL_ID: int):
 
         # TODO 課題1-2: 送られたメッセージをそのまま返却
         # メンションされていない場合の処理
-        else:
-            # 投稿用の文面を作る
-            text = message.content
-            await channel.send(text)
