@@ -104,10 +104,11 @@ Discord のテキストチャットに自分の作ったプログラムを設定
    ![picture 11](doc/img/install_ext_3.png)  
 4. VS Codeが再起動し、日本語化される。  
    同様の手順で、下の拡張機能もインストールする。 (Restart のダイアログが出たら Restart する。出ないときはそのまま継続しても良い)  
-* Python Extension Pack（Pythonの開発環境）
-* indent-rainbow（見た目の調整）
-* zenkaku（見た目の調整）
-5. インストールが終わったらVS Codeを閉じる(Windowを最小化するのではなく、アプリを終了する)
+* donjayamanne.python-extension-pack （Pythonの開発環境）
+* oderwat.indent-rainbow （見た目の調整）
+* mosapride.zenkaku （見た目の調整）
+1. インストールが終わったらVS Codeを閉じる(Windowを最小化するのではなく、アプリを終了する)
+   1. タスクバーでピン留めしておくと後々楽です
 
 #### 3-2-4. Python のインストール
 
@@ -142,12 +143,18 @@ VS Codeのターミナルで以下のコードを実行する
    ```
 #### 4-1-3. リポジトリをクローン (インターネット上のプログラムのダウンロード)
    ```ps
+   git config --global http.sslVerify false
+   ```
+   ```ps
    git clone https://github.com/dir-tajiisam/discord-bot-sample
    ```
    ```ps
    cd ./discord-bot-sample
    ```
 #### 4-1-4. 仮想環境にライブラリをインストールする
+   ```ps
+   pip install pipenv
+   ```
    ```ps
    pipenv sync
    ```
@@ -166,26 +173,28 @@ VS Codeのターミナルで以下のコードを実行する
    ![picture 45](doc/img/create_discord_bot_2.png)  
 5. 左のメニューから『Bot』を選択し、表示された画面で『Reset Token』ボタンを押してトークンをリセットする。  ※このトークンは後ほどソースコード内で利用する
    ![picture 46](doc/img/create_discord_bot_3.png)  
-7. ブラウザに戻り「Privileged Gateway Intents」の権限を付与するため、以下3項目のチェックをONにする  
+6. ブラウザに戻り、少し下の方に「Privileged Gateway Intents」がある。権限を付与するため、以下3項目のチェックをONにする  
 - PRESENCE INTENT
 - SERVER MEMBERS INTENT
 - MESSAGE CONTENT INTENT
 ![picture 46](doc/img/discord_004.png)  
+7. 「Careful」のダイアログが表示されたら「Save Changes」を押す
 
 #### 4-2-2. Discord Botをサーバに参加させる
 1. 左のメニューから『OAuth2』を選択し、下に表示される『URL Generator』を選択
-2. 『SCOPES』内の『Bot』にチェックする  
+2. 『SCOPES』内の『bot』にチェックする  
 ![picture 48](doc/img/create_discord_bot_5.png)  
 3. 画面を下にスクロールするとBotに与える権限のリストが表示されるので、必要な権限にチェックを入れる  
 ![picture 49](doc/img/create_discord_bot_6.png)  
    必要な権限は以下
    * Send Messages
-4. 更に下にスクロールすると認証用URL（『GENERATED URL』）が表示されているのでアクセスする  
+4. 更に下にスクロールすると認証用URL（『GENERATED URL』）が表示されているので、コピーして、ブラウザのタブを開いて、そのURLにアクセスする  
    ![picture 50](doc/img/create_discord_bot_7.png)  
 5. アクセスして表示された画面でBotを追加するサーバーを選択し、『はい』を押す  
-   （先ほど作成したサーバーにBotを追加する）  
+   （先ほどログインしたサーバーにBotを追加する）  
    ![picture 51](doc/img/create_discord_bot_8.png)  
-6. 権限を与えることを承認し、スパム対策認証をするとBotがサーバに追加される
+6. 続く画面で「認証」を選択
+7. reCAPTHAで人間であることを伝える
 
 #### 4-2-3. Discordにテキストチャンネルを作成する
 1. Discord のメニューに有る自身のグループの『＋』をクリックしチャンネルを作成する  
@@ -193,21 +202,41 @@ VS Codeのターミナルで以下のコードを実行する
 2. Text チャンネルを「メールアドレスの@の前_channel」の名前で作成する  
    ![picture 51](doc/img/discord_006.png)  
 3. 以降のプログラムではこのチャンネルを使用する
+4. チャンネルを開いた状態で、URLからSERVER_IDとCHANNEL_IDを取得する  
+   URLは以下のような形式になっているので、それぞれの値をメモしておく  
+   `https://discord.com/channels/`**`SERVER_ID`**`/`**`CHANNEL_ID`**  
 
 #### 4-2-4. プログラムの実行
 1. VS Code を開く
 2. Fileメニューの「Open Folder...」からソースコードのディレクトリを開く(C:\workspace\discord-bot-sample)
    ![picture 51](doc/img/vscode_001.png)  
    ![picture 51](doc/img/vscode_002.png)  
-3. 「.env」ファイル を開き TOKEN/SERVER_ID/CHANNEL_ID を記載する
+3. 開いた際に「このフォルダー内のファイルの作成者を信頼しますか？」と聞かれる場合が、問題ないので「はい、作成者を信頼します」を選択する
+4. 「.env」ファイル を開き、先程コピーした TOKEN/SERVER_ID/CHANNEL_ID を記載する  
+   1. <と>も一緒に上書きする
    ![picture 51](doc/img/src_001.png)  
-4. 『Ctrl』+『@』でターミナルを開き以下のコマンドを実行する
+   ```
+   TOKEN = ABCDE....
+   SERVER_ID = 12345....
+   CHANNEL_ID = 67890....
+   ```
+   となればOK
+5. 最後の『Ctrl』+『s』で保存する（<span style="color: red">編集したら必ず保存をするのを忘れずに！！※今後のどのファイルでも一緒</span>）
+5. 『Ctrl』+『@』でターミナルを開き以下のコマンドを実行する
+   ```ps
+   # ターミナルを立ち上げたら、以下のコマンドを実行する。今後も一緒。
+   pipenv shell
+   ```
    ```ps
    python app.py work1
    ```
-1. 以下の表示が出れば成功（Botが起動した状態）
+6. 以下の表示が出れば成功（Botが起動した状態）
    ![picture 51](doc/img/src_002.png)  
-6. Botを止めるときはターミナル上で『Ctrl』+『C』を押す
+7. 試しに自分で作ったBotにメンションをして話しかけてみよう！
+   ```
+   @メールアドレスの@の前_bot こんにちは
+   ```
+8. Botを止めるときはターミナル上で『Ctrl』+『C』を押す
 
 
 ## 5. 課題
