@@ -59,7 +59,7 @@ python app.py work1
   - 絵文字は[こちら](https://fromkato.com/emoji)からコピー可能です
   - (もっとやりたい人向け)押されたリアクションを元に、返信内容を変えて見ることにもチャレンジしてみよう
   ```python
-  if str(reaction.emoji) == '🐍':
+  if str(event.emoji) == '🐍':
     # 処理を書く
   ```
 - 備考（もっと詳しく知りたい人向け）
