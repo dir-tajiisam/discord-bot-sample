@@ -159,6 +159,17 @@ VS Codeのターミナルで以下のコードを実行する
    pipenv sync
    ```
 
+コマンド実行時に「UnicodeEncodeError: 'cp932' codec can't encode character～」とエラーが発生した場合には、
+エラーの上にエラーが発生したファイルが表示されているのでctrl+クリックで開いて、エラーになっている箇所（これもエラーの上に表示されている）
+   ```python
+   with open(～)
+   ```
+を
+   ```python
+   with open(～, encoding='utf-8')
+   ```
+に直してあげてから再度コマンドを実行する
+
 ### 4-2. プログラムの実行
 
 プログラムの実行には予め Discord に Botの登録が必要です。以下の手順で Botを登録します。  
