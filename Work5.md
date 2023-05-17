@@ -5,10 +5,17 @@
 ### 課題 5 自分で考えたBotをプログラムしてみよう
 
 🚨忘れずに🚨  
-修正したあとは、VSCodeのターミナルから『Ctrl』+『C』でプログラムを停止し、以下のコマンドで実行してください
+VSCodeのターミナルを開いた際は、以下のコマンドを実行してください
+```ps
+pipenv shell
+```
+修正したあとは、VSCodeのターミナルから『Ctrl』+『C』でプログラムを停止し、以下のコマンドで実行してください<span style="color: red">（work5をつけること）</span>
 ```ps
 python app.py work5
 ```
+
+:point_right: ターミナルで十字キーの上を押すと直前に入力したコマンドが表示されるので、簡単にコマンド再実行ができます
+
 
 - 修正するファイル
   - work5/ にあるファイルのいずれか
@@ -89,7 +96,8 @@ python app.py work5
 
 0. 同時に2つ起動すると良くないので、VSCodeのターミナルから『Ctrl』+『C』でプログラムを停止しておく
 1. 画面上部の「Run」を押し、右上の「Webview」が開き「Hello. I'm alive」と表示されることを確認する。Webviewに表示されたURLをコピーしておく
-   1. ![repl.it](./doc/img/replit_run01.png)
+   1. <span style="color: red">しばらく実行したままにしておくこと。このときブラウザのタブも開いたままにしておくこと。30分くらい</span>
+   2. ![repl.it](./doc/img/replit_run01.png)
 2. スプレッドシートにアクセスし、自分の名前の行の「URL」列に先程コピーしたURLを貼り付ける
    1. ついでに、スプレッドシートの「repl.itのURL」列に、作業している画面のURL（https://replit.com/@IsamuTajima/Discord-Bot-Sample のようなもの）を貼り付ける
    2. ついでに、スプレッドシートの「DESCRIPTION」列に、自分のBotの説明を書いておく

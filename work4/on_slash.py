@@ -14,7 +14,7 @@ def weather(area_name: str = "東京"):
 
     # 天気概況
     url = f"https://www.jma.go.jp/bosai/forecast/data/overview_forecast/{area_id}.json"
-    forecast = requests.get(url).json()
+    forecast = requests.get(url, verify=False).json()
     text = "\n".join(forecast["text"].split())
 
     return text

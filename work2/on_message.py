@@ -29,7 +29,7 @@ def weather(area_name: str):
 
     # 天気概況
     url = f"https://www.jma.go.jp/bosai/forecast/data/overview_forecast/{area_id}.json"
-    forecast = requests.get(url).json()
+    forecast = requests.get(url, verify=False).json()
     text = "\n".join(forecast["text"].split())
 
     return text
@@ -65,7 +65,9 @@ def on_message(client: discord.Client, CHANNEL_ID: int):
             await message.reply(text)
         # TODO 課題2-2
         # 天気または予報から始まる場合は天気を返す(東京)
-
+        elif message.content.startswith(('天気')):
+            text = weather("東京")
+            await message.reply(text)
         # TODO 課題2-3
         # 都道府県名がメッセージだった場合はその都道府県の天気を返す
 
