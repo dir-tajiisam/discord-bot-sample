@@ -5,10 +5,16 @@
 ### 課題 1 DiscordBotの基本動作を確認する
 
 🚨忘れずに🚨  
-修正したあとは、VSCodeのターミナルから『Ctrl』+『C』でプログラムを停止し、以下のコマンドで実行してください
+VSCodeのターミナルを開いた際は、以下のコマンドを実行してください
+```ps
+pipenv shell
+```
+修正したあとは、VSCodeのターミナルから『Ctrl』+『C』でプログラムを停止し、以下のコマンドで実行してください<span style="color: red">（work1をつけること）</span>
 ```ps
 python app.py work1
 ```
+
+:point_right: ターミナルで十字キーの上を押すと直前に入力したコマンドが表示されるので、簡単にコマンド再実行ができます
 
 ---
 
@@ -59,7 +65,7 @@ python app.py work1
   - 絵文字は[こちら](https://fromkato.com/emoji)からコピー可能です
   - (もっとやりたい人向け)押されたリアクションを元に、返信内容を変えて見ることにもチャレンジしてみよう
   ```python
-  if str(reaction.emoji) == '🐍':
+  if str(event.emoji) == '🐍':
     # 処理を書く
   ```
 - 備考（もっと詳しく知りたい人向け）
