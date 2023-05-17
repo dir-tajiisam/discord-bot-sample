@@ -48,6 +48,11 @@
 - on_readyにリマインダー機能を記述する
 ```python
 #on_ready.py
+from discord.ext import tasks
+from work5.on_slash import get_remind_list
+import datetime
+import math
+
     #リマインド機能
     #一秒ごとに処理を実行する
     @tasks.loop(seconds=1)
@@ -102,19 +107,24 @@ def get_remind_list():
 ```
 
 ### ChatGptを組み込む
-- openaiのapikeyを取得する。
+- openaiのAPI_KEYを取得する。
 - 取得方法は[こちら](https://auto-worker.com/blog/?p=6988)
+- .envに追記（！！！！ソースコード上にAPI_KEYを直接書かないこと！！！！）
+```
+API_KEY = <openaiのAPI_KEY>
+```
 - openaiにpackage追加
     - Pipfileの[packages]の下にopenai = "*"を記載
-    - pyenv installを実行
-    - pyenv shellを実行
+    - pipenv installを実行
+    - pipenv shellを実行
+
 ```python
 #on_message.py
 import os
 import openai
 
 # .envにOPENAI_IDを定義し、取得したapikeyを記述しておく
-openai.api_key = os.environ['OPENAI_ID']
+openai.api_key = os.environ['API_KEY']
 def on_message(client: discord.Client, CHANNEL_ID: int):
 
     @client.event
