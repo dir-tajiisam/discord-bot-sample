@@ -180,6 +180,7 @@ VS Codeのターミナルで以下のコードを実行する
 ![picture 49](doc/img/create_discord_bot_6.png)  
    必要な権限は以下
    * Send Messages
+   * Attach Files
 4. 更に下にスクロールすると認証用URL（『GENERATED URL』）が表示されているのでアクセスする  
    ![picture 50](doc/img/create_discord_bot_7.png)  
 5. アクセスして表示された画面でBotを追加するサーバーを選択し、『はい』を押す  
