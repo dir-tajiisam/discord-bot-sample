@@ -151,3 +151,13 @@ def on_message(client: discord.Client, CHANNEL_ID: int):
         )
         await message.reply(response.choices[0]["message"]["content"].strip())
 ```
+## ローカルの画像を表示する
+- 「file=discord.File('画像ファイルのパス')」で表示できる
+- 表示したい画像ファイルをDISCORD‐BOT―SAMPLEフォルダ配下に配置する
+- 画像ファイルを右クリック→「相対パスをコピー」を選択
+― コピーしたパスを画像ファイルのパスの部分に貼り付ける
+- 例）
+``` python
+        await interaction.followup.send(file=discord.File('sorajiro.jpg'), ephemeral=False)
+
+```
