@@ -33,10 +33,9 @@ python app.py work5
 
 1. https://replit.com/ にアクセスする
    1. ![repl.it](./doc/img/replit_signup01.png)
-2. Google認証を選択する
+2. ~~Google認証を選択する~~ <span style="color: red">現在はGoogle認証ができないので、「Continue with email→」を選択し、会社メアドでサインアップをしてください</span>
    1. ![repl.it](./doc/img/replit_signup02.png)
-3. 会社メアドで作成したGoogleアカウントでログインする
-   1. ![repl.it](./doc/img/replit_signup03.png)
+3. 会社メアド宛に来たメールを確認し、リンクをクリックする
 4. 「For personal use」を選択する
    1. ![repl.it](./doc/img/replit_signup04.png)
 5. 「New to coding」を選択する
